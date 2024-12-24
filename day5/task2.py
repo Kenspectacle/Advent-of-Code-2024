@@ -34,9 +34,7 @@ def find_valid_print_queue(rules, updates) -> int:
                     valid_queue = False
                     is_sorted = False
                     # sort
-                    temp = update[i+1]
-                    update[i+1] = update[i]
-                    update[i] = temp 
+                    update[i], update[i+1] = update[i+1], update[i]
                     
                     
                 
@@ -52,5 +50,5 @@ def find_valid_print_queue(rules, updates) -> int:
 rules, updates = load_data('day5/task1_test.txt')
 print(find_valid_print_queue(rules, updates))
 
-# rules, updates = load_data('day5/test2.txt')
-# print(find_valid_print_queue(rules, updates))
+rules, updates = load_data('day5/test2.txt')
+print(find_valid_print_queue(rules, updates))

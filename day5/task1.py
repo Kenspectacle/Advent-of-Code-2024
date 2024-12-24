@@ -1,4 +1,5 @@
 from collections import defaultdict
+from itertools import pairwise
 import math
 
 def load_data(input_file) -> list:
@@ -22,10 +23,8 @@ def find_valid_print_queue(rules, updates) -> int:
 
         valid_queue = True
         
-        for i in range(len(update) - 1):
-            prev = update[i]
-            curr = update[i+1]
-            if curr not in adj_list[prev]:
+        for first, second in pairwise(update):
+            if second not in adj_list[first]:
                 valid_queue = False
                 break 
             
